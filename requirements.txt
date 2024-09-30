@@ -1,0 +1,9 @@
+flask==3.0.3
+pandas
+lime
+matplotlib
+numpy
+scikit-learn
+scipy
+xgboost
+gunicorn

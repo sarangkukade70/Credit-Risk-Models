@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Prediction App Submit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .container {
+            background-color: transparent;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            margin-top: 50px;
+            height: 70vh;
+        }
+
+        .container p{
+            font-size: 2.5rem;
+        }
+        .inner-container{
+            display: flex;
+        }
+
+        .inner-container .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inner-container .right {
+            flex: 1;
+        }
+
+
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #17a2b8;
+        }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .title {
+            margin-top: 20px;
+            font-size: 4rem;
+            font-weight: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="title mb-2">Bank of Campus-X</p>
+    <div class="container">
+
+        <p class="result title">Risk Analysis</p>
+        <div class="inner-container">
+        <div class="left">
+            <div class="output" id="output">
+                <p class="title" id="predict"></p>
+                <div class="image-container">
+                    <img id="icons" src="" alt="Risk Icons">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="image-container">
+                <img src="../static/lime_explanation.png" alt="Related to Machine Learning">
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var itemTextToChange = document.getElementById('predict');
+        var iconToChange = document.getElementById('icons');
+        var result = "{{ result }}";
+        console.log(result)
+        if(result==='0'){
+            itemTextToChange.innerHTML = 'Low Risk';
+            itemTextToChange.style.color = 'blue';
+            iconToChange.src = '../static/lowrk.png';
+        }else if(result==='1'){
+            itemTextToChange.innerHTML = 'Medium Risk';
+            itemTextToChange.style.color = 'green';
+            iconToChange.src = '../static/medrk.png';
+        }else if(result==='2'){
+            itemTextToChange.innerHTML = 'Medium to High Risk';
+            itemTextToChange.style.color = 'orange';
+            iconToChange.src = '../static/m2hrk.png';
+        }else{
+            itemTextToChange.innerHTML = 'High Risk';
+            itemTextToChange.style.color = 'red';
+            iconToChange.src = '../static/vhrk.png';
+        }
+
+    });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
